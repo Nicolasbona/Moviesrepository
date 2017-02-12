@@ -1,0 +1,62 @@
+/* CSS Document */
+
+.center
+		{
+		text-align: center;
+	
+		}
+.table
+		{
+			width: 100%;
+			border: 1px solid green; 
+			text-align: center;
+			margin-bottom: 25px;
+		}
+.centertext
+		{
+			width: 100%;
+			text-align: center;
+			margin-bottom: 25px;
+		}
+
+.margin
+		{
+		 margin-bottom: :25px;	
+		}
+
+.red
+		{
+		 color:red;
+		 font-size: 120%;
+
+		}
+.fondo
+	{
+	background-image: url("https://i.ytimg.com/vi/ETDz5z46Loo/maxresdefault.jpg")
+	}
+
+body {
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+}
+
+.container header {
+    overflow: hidden;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+#images {
+    padding: 20px 0;
+}
+
+footer {
+    border-top: 1px solid #E5E5E5;
+    overflow: hidden;
+    padding: 20px 0;
+}
+.imagen {
+	width: 100px;
+}

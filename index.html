@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional/<html lang="es" >
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="js/ui-bootstrap-tpls-2.5.0.min.js"></script>
+
+    <script src="js/main.js"></script>
+    <title>Movie Gallery</title>
+</head>
+<body  ng-app="FilmAPP">
+    <div class="container" >
+        <header ng-controller="MenuController">
+        	<h3 class="text-muted">Movie Gallery</h3>
+            <ul class="nav nav-pills pull-right">
+                
+                <li>
+                    <a ng-hide="agregar" href="#" ng-click="add()"><span class="glyphicon glyphicon-plus"></span></a>
+                   	<div  ng-show="agregar">Agregar:
+		            	<br/>
+		            	<label>
+		            		Nombre:
+		            		<br/>
+		            		<input type="text" name="name" ng-model="nombre">
+		            	</label>
+		            	<br/>
+		            	<label>
+		            		URL:
+		            		<br/>
+		            		<input type="text" name="url" ng-model="url">
+		            	</label>
+		            	<br/>
+		            	<label>
+		            		Descripcion:
+		            		<br/>
+		            		<textarea type="text" name="desc" ng-model="desc"></textarea>
+		            	</label>
+		            	<br/>
+		            	<label>
+		            		Link:
+		            		<br/>
+		            		<input type="text" name="link" ng-model="link">
+		            	</label>
+		            	<br/>
+		            	<br/>
+		            	<button ng-click="guardar($index)">Guardar</button>
+		            	<button ng-click="cancelar($index)">Cancelar</button>
+		            	
+		            </div>
+                </li>
+                
+            </ul>
+        </header>
+		<div id="images" class="row" ng-controller="FilmAPPController">
+		    <div class="col-lg-12 media" ng-repeat="peliculas in movielist  track by $index">
+		    	<img class="col-sm-4 col-md-4 col-xs-4 col-sm-4 img-rounded" ng-src="{{ peliculas.url }}">
+		        <div class="media-object">
+		            
+		            <h4 class="media-heading">{{ peliculas.name }}</h4>
+		            <div  ng-show="editando === $index">Editando:
+		            	<br/>
+		            	<label>
+		            		Nombre:
+		            		<input type="text" name="name" ng-model="peliculas.name">
+		            	</label>
+		            	<br/>
+		            	<label>
+		            		URL:
+		            	<input type="text" name="url" ng-model="peliculas.url">
+		            	</label>
+		            	<br/>
+		            	<label>
+		            		Descripcion:
+		            		<br/>
+		            	<textarea type="text" name="desc" ng-model="peliculas.desc"></textarea>
+		            	</label>
+		            	<br/>
+		            	<label>
+		            		Link:
+		            	<input type="text" name="link" ng-model="peliculas.link">
+		            	</label>
+		            	<br/>
+		            	<button ng-click="guardar($index)">Guardar</button>
+		            	<button ng-click="cancelar($index)">Cancelar</button>
+		            	
+		            </div>
+
+		            <div ng-hide="editando === $index">
+		                <a ng-click="delete($index)">
+		                	<span class="glyphicon glyphicon-minus " ></span> 
+		                	Eliminar
+		                </a>
+		                <br/>
+		                 <a ng-click="edit($index)">
+		                	<span class="glyphicon glyphicon-edit " ></span> 
+		                	Editar
+		                </a>
+		                <br/>
+		                <a>
+			                <span class="glyphicon glyphicon-heart"></span> 
+			                Favorito
+		                </a>
+		             
+			            <p >
+			            	{{peliculas.desc}}
+			            </P>
+			            <p>
+			                <a ng-href="{{ peliculas.link }}" >Link</a>
+			            </p>
+		            </div> 
+		        </div>
+		    </div>
+		</div>
+        <footer>
+            <p>&copy; Movie Gallery</p>
+        </footer>
+    </div>
+</body>
+
+</html>
